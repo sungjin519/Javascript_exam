@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>끝말 잇기</title>
+</head>
+<body>
+  <div><span id="order">1</span>번째 참가자</div>
+  <div>제시어: <span id="word"></span></div>
+  <input type="text">
+  <button>입력</button>
+  <script>
+    /*
+    const number = parseInt(prompt('참가자 숫자'), 10); //parseInt:문자열을 숫자로, 10:진법
+    console.log('number', number);  //콘솔에서 확인
+    alert(number); //경고창
+    const YesOrNo = confirm('맞으면 확인 아니면 취소'); //prompt:사용자로부터 값 전달, alert:경고 메세지, confirm:확인 요구
+    //document.querySelector('#order'); -> 선택자, #:아이디, 2개이상부터는 document.querySelectorAll
+    document.querySelector('input').addEventListener('input', function() {
+      console.log('글자 입력');
+    });
+    const onClick = function() {  //함수에 변수를 넣어서 사용 가능
+    //const onClick = () => //화살표 함수로 표현 가능
+      console.log('버튼 클릭');
+      return undefined; //onClick === undefined <- return 생략 가능
+    }
+    document.querySelector('button').addEventListener('click', onClick);
+    */
+    const number = Number(prompt('참가자 숫자'));
+    const $button = document.querySelector('button');
+    const $input = document.querySelector('input');
+    const $word = document.querySelector('#word');
+    const $order = document.querySelector('#order');
+
+    let word; //제시어
+    let newWord;  //새로 입력한 단어
+
+    const onClickButton = () => {
+      /*
+      if (!word) { //제시어가 비어있는지 확인
+        //비어 있는 경우
+        word = newWord; //입력한 단어가 제시어가 된다
+        $word.textContent = word;
+        $input.value = '';  //제시어가 입력되고 빈칸으로 활성
+        const order = Number($order.textContent); //현재 숫자, 문자열을 숫자로 돌림:Number, (order라는 변수에 저장)
+        if(order + 1 > number) {
+          $order.textContent = 1;
+        } else {
+          $order.textContent = order + 1;
+        }
+      } else {  //비어 있지 않는 경우
+        */
+      if (!word || word[word.length - 1] === newWord[0]) { // ||(또는)을 추가함으로 위 코드를 생략 가능함
+        word = newWord; //입력한 단어가 제시어가 된다
+        $word.textContent = word;
+        $input.value = '';  //제시어가 입력되고 빈칸으로 활성
+        const order = Number($order.textContent); //현재 숫자, 문자열을 숫자로 돌림:Number, (order라는 변수에 저장)
+        if (order + 1 > number) {
+          $order.textContent = 1;
+        } else {
+          $order.textContent = order + 1;
+        }
+      } else {
+        alert('틀린 단어입니다!');
+      }
+      $input.value = '';
+      $input.focus();
+    };
+    const onInput = (event) => {
+      newWord = event.target.value; //글자 입력 할때마다 검증
+    };
+
+    $button.addEventListener('click', onClickButton);
+    $input.addEventListener('input', onInput);
+
+  </script>
+</body>
+
+</html>

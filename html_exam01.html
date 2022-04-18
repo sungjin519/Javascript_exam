@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <form action="/api/join" method="post">
+        <label>아이디<input type="text" placeholder="아이디 입력" id="userid" name="userid" /></label><br />
+        <label>비밀번호<input type="password" id="password" name="password" /></label><br />
+        <label>이메일<input type="email" id="email" name="email" /></label><br />
+        <label>성별
+          <input type="radio" name="gender" value="m" />남
+          <input type="radio" name="gender" value="f" />여
+        </label><br />
+        <label>구독<input type="checkbox" name="subs" /><br />
+        <label>지역
+          <select name="area">
+            <option value="seoul">서울</option>
+            <option value="gyeonggi">경기</option>
+            <option value="jeolla">전라</option>
+            <option value="gyeongsang">경상</option>
+          </select> 
+        </label><br />
+        <label>하고싶은 말<textarea placeholder="입력하세요" name="textarea"></textarea><br />
+        </label>
+        <button type="submit">제출</button>
+        <button type="reset">취소</button>
+      </form>
+</head>
+<body>
+    
+</body>
+</html>
